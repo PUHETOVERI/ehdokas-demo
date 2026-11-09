@@ -51,13 +51,21 @@ h1{font:var(--dw) clamp(44px,7vw,84px)/1.02 var(--display);letter-spacing:var(--
 .photo{aspect-ratio:4/5;border-radius:var(--r);background:var(--soft);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s2);color:var(--muted)}
 .photo .mono{font:var(--dw) 88px/1 var(--display);color:var(--accent);letter-spacing:.02em}
 .photo small{font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+/* Kuvapaikat: harmaa alue + nimilappu kertoo, mikä kuva paikalle tulee */
+.photo,.slot{position:relative;overflow:hidden;background:#ECEAE5;border:1px solid var(--line);border-radius:var(--r)}
+.slot{display:flex;align-items:center;justify-content:center;color:#B9B5AC;min-width:0}
+.slot svg{width:44px;height:44px}
+.slot-tag{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--ink);padding:8px 12px;font:600 11px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-align:left}
+.slot-wide{aspect-ratio:16/7;margin-top:var(--s4)}
+.gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--s2)}
+.gallery .slot{aspect-ratio:4/3}
 .hero-split .wrap{display:grid;grid-template-columns:1.35fr .9fr;gap:var(--s5);align-items:center}
 .hero-centered{text-align:center} .hero-centered .lead,.hero-centered .measure{margin-left:auto;margin-right:auto}
 .hero-centered .btns{justify-content:center}
 .hero-centered .chips{justify-content:center}
 .hero-band{background:var(--soft);border-bottom:1px solid var(--line)}
 .hero-band .wrap{display:grid;grid-template-columns:auto 1fr;gap:var(--s5);align-items:center}
-.hero-band .photo{width:240px;aspect-ratio:1;border-radius:50%;background:var(--surface)}
+.hero-band .photo{width:240px;aspect-ratio:1;border-radius:50%} .hero-band .slot-tag{display:none}
 .hero-band .photo .mono{font-size:72px}
 .hero-editorial h1{border-bottom:1px solid var(--ink);padding-bottom:var(--s3)}
 .hero-editorial .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-top:0}
@@ -73,7 +81,7 @@ h1{font:var(--dw) clamp(44px,7vw,84px)/1.02 var(--display);letter-spacing:var(--
 .hero-statement{background:linear-gradient(90deg,var(--surface) 0%,var(--surface) 58%,var(--soft) 58%)}
 .hero-statement .wrap{display:grid;grid-template-columns:1.25fr .8fr;gap:var(--s5);align-items:center}
 .hero-statement h1{font-size:clamp(40px,6vw,72px);line-height:1.08}
-.hero-statement .photo{background:var(--surface)}
+
 /* Iso nimi + vino jako */
 .hero-bigname{background:linear-gradient(162deg,var(--bg) 0%,var(--bg) 52%,var(--soft) 52%,var(--soft) 100%)}
 .hero-bigname .wrap{display:grid;grid-template-columns:1.2fr .85fr;gap:var(--s5);align-items:center}
@@ -129,8 +137,10 @@ footer ul{margin:0;padding-left:18px;word-break:break-all} footer a{color:var(--
   .links{display:none} .nav .wrap{min-height:64px}
   .hero{padding:var(--s5) 0 var(--s4)}
   .hero-split .wrap,.hero-band .wrap,.hero-portrait .wrap,.hero-bigname .wrap,.hero-statement .wrap,.about,.proposal .box{grid-template-columns:1fr;gap:var(--s4)}
-  .hero-bigname .wrap{grid-template-columns:1fr} .hero-bigname .photo{display:none}
-  .hero-statement{background:var(--surface)} .hero-statement .photo{display:none}
+  .hero-bigname .wrap{grid-template-columns:1fr} .hero-bigname .photo,.hero-statement .photo{aspect-ratio:16/11}
+  .hero-statement{background:var(--surface)}
+  .gallery{grid-template-columns:1fr 1fr} .gallery .slot:first-child{grid-column:1/-1;aspect-ratio:16/9}
+  .slot-wide{aspect-ratio:16/10} .slot-tag{font-size:10px;padding:7px 10px}
   .hero-portrait .photo{aspect-ratio:16/11}
   .hero-split .photo{aspect-ratio:16/10;order:-1} .hero-split .photo .mono{font-size:64px}
   .hero-band .photo{width:132px} .hero-band .photo .mono{font-size:44px} .hero-band .photo small{display:none}
@@ -149,10 +159,11 @@ footer ul{margin:0;padding-left:18px;word-break:break-all} footer a{color:var(--
 </div></nav>
 <main id="top">
 <section class="hero hero-band"><div class="wrap">
-  <div class='photo' role='img' aria-label='Paikka ehdokkaan omalle kuvalle'><span class='mono'>HM</span><small>Paikka omalle kuvalle</small></div><div><span class="kicker">Kuntavaaliehdokas · Helsinki</span><h1>Hussein Mohamud</h1><p class="lead">Helsinkiläinen yrittäjä, joka johtaa markkinointitoimisto Fitionledia. Toimisto auttaa yrityksiä kasvamaan digitaalisen markkinoinnin ja verkkosivujen avulla.</p><div class='btns'><a class='btn btn-primary' href='#minusta'>Tutustu</a><a class='btn btn-ghost' href='#ehdotus'>Tietoa mallisivusta</a></div></div></div></section>
+  <div class='photo' role='img' aria-label='Paikka ehdokkaan omalle kuvalle'><span class='mono'>HM</span><small>Paikka omalle kuvalle</small><span class='slot-tag'>[Pääkuva] Hussein Mohamud · tulossa</span></div><div><span class="kicker">Kuntavaaliehdokas · Helsinki</span><h1>Hussein Mohamud</h1><p class="lead">Helsinkiläinen yrittäjä, joka johtaa markkinointitoimisto Fitionledia. Toimisto auttaa yrityksiä kasvamaan digitaalisen markkinoinnin ja verkkosivujen avulla.</p><div class='btns'><a class='btn btn-primary' href='#minusta'>Tutustu</a><a class='btn btn-ghost' href='#ehdotus'>Tietoa mallisivusta</a></div></div></div></section>
 <section class="sec reveal" id="minusta"><div class="wrap">
-  <header class="sec-head"><p class="label">Minusta</p><h2>Kuka on Hussein?</h2></header><div class='about'><div class='measure'><p>Helsinkiläinen yrittäjä, joka johtaa markkinointitoimisto Fitionledia. Toimisto auttaa yrityksiä kasvamaan digitaalisen markkinoinnin ja verkkosivujen avulla.</p><p class='note'>Lopullinen esittely kirjoitetaan yhdessä ehdokkaan kanssa, hänen omalla äänellään.</p></div><dl class='kv'><div><dt>Työ</dt><dd>Yrittäjä, markkinointitoimisto Fitionled</dd></div><div><dt>Osaaminen ja koulutus</dt><dd>Digitaalisen markkinoinnin osaaminen itse opeteltuna</dd></div><div><dt>Kunta</dt><dd>Helsinki</dd></div></dl></div></div></section><section class="sec reveal tint" id="teemat"><div class="wrap">
-  <header class="sec-head"><p class="label">Teemat</p><h2>Asioita, joita ehdokas on nostanut esiin</h2></header><ol class='themes'><li>Yrittäjyys reittinä työllistymiseen</li><li>Nuorille tukiverkostoja: koulu, nuorisotilat ja harrastukset</li><li>Kannustaa nuoria hankkimaan tietoa ja taitoja</li></ol><p class='note'>Koottu julkisista lähteistä. Ehdokas muotoilee vaaliteemansa itse.</p></div></section>
+  <header class="sec-head"><p class="label">Minusta</p><h2>Kuka on Hussein?</h2></header><div class='about'><div class='measure'><p>Helsinkiläinen yrittäjä, joka johtaa markkinointitoimisto Fitionledia. Toimisto auttaa yrityksiä kasvamaan digitaalisen markkinoinnin ja verkkosivujen avulla.</p><p class='note'>Lopullinen esittely kirjoitetaan yhdessä ehdokkaan kanssa, hänen omalla äänellään.</p></div><dl class='kv'><div><dt>Työ</dt><dd>Yrittäjä, markkinointitoimisto Fitionled</dd></div><div><dt>Osaaminen ja koulutus</dt><dd>Digitaalisen markkinoinnin osaaminen itse opeteltuna</dd></div><div><dt>Kunta</dt><dd>Helsinki</dd></div></dl></div><div class='slot slot-wide' role='img' aria-label='Kuvapaikka: Hussein arjessa tai työssään'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.2' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='1'/><circle cx='9' cy='10' r='1.6'/><path d='M4 17l5-4 4 3 3-2 4 3'/></svg><span class='slot-tag'>[Kuva] Hussein arjessa tai työssään · tulossa</span></div></div></section><section class="sec reveal tint" id="teemat"><div class="wrap">
+  <header class="sec-head"><p class="label">Teemat</p><h2>Asioita, joita ehdokas on nostanut esiin</h2></header><ol class='themes'><li>Yrittäjyys reittinä työllistymiseen</li><li>Nuorille tukiverkostoja: koulu, nuorisotilat ja harrastukset</li><li>Kannustaa nuoria hankkimaan tietoa ja taitoja</li></ol><p class='note'>Koottu julkisista lähteistä. Ehdokas muotoilee vaaliteemansa itse.</p></div></section><section class="sec reveal" id="kuvat"><div class="wrap">
+  <header class="sec-head"><p class="label">Kuvat</p><h2>Kuvia kampanjasta</h2></header><div class='gallery'><div class='slot ' role='img' aria-label='Kuvapaikka: Ehdokkaan oma kampanjakuva'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.2' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='1'/><circle cx='9' cy='10' r='1.6'/><path d='M4 17l5-4 4 3 3-2 4 3'/></svg><span class='slot-tag'>[Kuva 1] Ehdokkaan oma kampanjakuva · tulossa</span></div><div class='slot ' role='img' aria-label='Kuvapaikka: Ehdokkaan oma kuva'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.2' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='1'/><circle cx='9' cy='10' r='1.6'/><path d='M4 17l5-4 4 3 3-2 4 3'/></svg><span class='slot-tag'>[Kuva 2] Ehdokkaan oma kuva · tulossa</span></div><div class='slot ' role='img' aria-label='Kuvapaikka: Ehdokkaan oma kuva'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.2' aria-hidden='true'><rect x='3' y='5' width='18' height='14' rx='1'/><circle cx='9' cy='10' r='1.6'/><path d='M4 17l5-4 4 3 3-2 4 3'/></svg><span class='slot-tag'>[Kuva 3] Ehdokkaan oma kuva · tulossa</span></div></div><p class='note'>Harmaat alueet ovat kuvapaikkoja. Niihin tulevat ehdokkaan omat kuvat, hänen luvallaan.</p></div></section>
 <section class="proposal" id="ehdotus"><div class="wrap"><div class="box">
   <div><h2>Tämä on mallisivu.</h2>
   <p>FITIONLED Oy teki tämän sivun ehdotukseksi siitä, miltä ehdokkaan oma kampanjasivu voisi näyttää. Ehdokas ei ole tilannut,
