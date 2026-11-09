@@ -124,10 +124,26 @@ ol.themes li:before{content:counter(t,decimal-leading-zero);font:var(--dw) 20px/
 .proposal .box{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);border-radius:var(--r);padding:var(--s4);display:grid;grid-template-columns:1.5fr auto;gap:var(--s4);align-items:center}
 .proposal h2{font-size:28px;margin-bottom:var(--s2)} .proposal p{margin:0;color:var(--muted)}
 .variants{margin-top:var(--s3);font-size:14px;color:var(--muted)} .variants a{margin-right:10px}
-footer{padding:var(--s5) 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-footer .notice{color:var(--ink);font-weight:600;background:#FFF3C4;border:1px solid #E6D48A;border-radius:var(--r);padding:var(--s2) var(--s3);margin-bottom:var(--s3)}
-footer h3{font:600 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:var(--s4) 0 var(--s2)}
-footer ul{margin:0;padding-left:18px;word-break:break-all} footer a{color:var(--muted)}
+footer{background:var(--ink);color:#C9C6BF;font-size:15px}
+footer a{color:#fff}
+.foot-main{display:grid;grid-template-columns:1.3fr 1.2fr .8fr;gap:var(--s5);padding:var(--s6) 0 var(--s5)}
+.foot-main>*{min-width:0}
+.foot-name{font:var(--dw) 28px/1.15 var(--display);letter-spacing:var(--dtrack);text-transform:var(--dcase);color:#fff;margin:0 0 var(--s2)}
+.foot-name span{color:var(--soft)}
+footer h3{font:600 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 var(--s3)}
+.foot-list{list-style:none;margin:0;padding:0}
+.foot-list li{padding:10px 0;border-bottom:1px solid #2E2E2E}
+.foot-list li:first-child{border-top:1px solid #2E2E2E}
+.foot-list .contact{display:flex;justify-content:space-between;gap:var(--s2);padding:0;background:none;border:0;border-radius:0;color:#fff;text-decoration:none}
+.foot-list .contact span{display:inline;margin:0;font-size:13px;color:#9A968E} .foot-list .contact b{font-weight:600;text-align:right;overflow-wrap:anywhere}
+.foot-list .contact:hover b{text-decoration:underline}
+.foot-list .todo{display:flex;justify-content:space-between;gap:var(--s2);font-size:13px;color:#9A968E} .foot-list .todo b{font-weight:500;color:#C9C6BF}
+.foot-nav a{text-decoration:none} .foot-nav a:hover{text-decoration:underline}
+.foot-legal{border-top:1px solid #2E2E2E;padding:var(--s4) 0 var(--s5);font-size:13px;color:#9A968E}
+.foot-legal a{color:#C9C6BF}
+.foot-legal .notice{color:var(--ink);font-weight:600;background:#FFF3C4;border:1px solid #E6D48A;border-radius:var(--r);padding:var(--s2) var(--s3);margin-bottom:var(--s3);font-size:14px}
+.foot-legal h3{color:#C9C6BF;margin:var(--s3) 0 var(--s2)}
+.foot-legal ul{margin:0;padding-left:18px;word-break:break-all}
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease} .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 @media (max-width:860px){
@@ -136,7 +152,7 @@ footer ul{margin:0;padding-left:18px;word-break:break-all} footer a{color:var(--
   h1,h2,.statement{hyphens:auto} .statement{font-size:clamp(26px,7vw,34px)} .kicker{letter-spacing:.08em} .btn{letter-spacing:.06em}
   .links{display:none} .nav .wrap{min-height:64px}
   .hero{padding:var(--s5) 0 var(--s4)}
-  .hero-split .wrap,.hero-band .wrap,.hero-portrait .wrap,.hero-bigname .wrap,.hero-statement .wrap,.about,.proposal .box{grid-template-columns:1fr;gap:var(--s4)}
+  .hero-split .wrap,.hero-band .wrap,.hero-portrait .wrap,.hero-bigname .wrap,.hero-statement .wrap,.about,.proposal .box,.foot-main{grid-template-columns:1fr;gap:var(--s4)}
   .hero-bigname .wrap{grid-template-columns:1fr} .hero-bigname .photo,.hero-statement .photo{aspect-ratio:16/11}
   .hero-statement{background:var(--surface)}
   .gallery{grid-template-columns:1fr 1fr} .gallery .slot:first-child{grid-column:1/-1;aspect-ratio:16/9}
@@ -172,13 +188,20 @@ footer ul{margin:0;padding-left:18px;word-break:break-all} footer a{color:var(--
   <a class="btn btn-primary" href="mailto:hussein@fitionled.fi?subject=Mallisivu%3A%20Hussein%20Mohamud">Kysy sivusta</a>
 </div></div></section>
 </main>
-<footer id="yhteys-tekija"><div class="wrap">
+<footer id="yhteys-tekija">
+<div class="wrap foot-main">
+  <div><p class="foot-name">Hussein <span>Mohamud</span></p>
+  <p>Kuntavaaliehdokas · Helsinki</p></div>
+  <div><h3>Yhteystiedot</h3><ul class="foot-list"><li><span class='todo'>Sähköposti<b>lisätään ehdokkaan kanssa</b></span></li><li><span class='todo'>Puhelin<b>lisätään ehdokkaan kanssa</b></span></li><li><span class='todo'>Some<b>lisätään ehdokkaan kanssa</b></span></li></ul></div>
+  <div><h3>Sivusto</h3><ul class="foot-list foot-nav"><li><a href='#minusta'>Minusta</a></li><li><a href='#teemat'>Teemat</a></li><li><a href='#ehdotus'>Yhteys</a></li><li><a href='#top'>Sivun alkuun</a></li></ul></div>
+</div>
+<div class="foot-legal"><div class="wrap">
   <div class="notice">UNOFFICIAL DEMONSTRATION — Created as a website proposal. Not approved or endorsed by the candidate.<br>EPÄVIRALLINEN MALLISIVU — Tehty verkkosivuehdotukseksi. Ehdokas ei ole hyväksynyt eikä tukenut tätä sivua.</div>
   <p>Sivun tekijä: FITIONLED Oy · Markkinointijohtaja · 045 133 2265 · hussein@fitionled.fi. Sivua ei ole julkaissut ehdokas, puolue eikä vaaliviranomainen.</p>
   <p>Haluatko, että sivu poistetaan? <a href="mailto:hussein@fitionled.fi?subject=Poistopyynt%C3%B6%3A%20Hussein%20Mohamud">Lähetä poistopyyntö</a> – poistamme sivun maksutta ja viipymättä.</p>
   <h3>Lähteet</h3><ul><li><a href='https://www.hameenlinnankaupunkiuutiset.fi/paikalliset/8260383' rel='noopener nofollow' target='_blank'>https://www.hameenlinnankaupunkiuutiset.fi/paikalliset/8260383</a></li><li><a href='https://www.yrittajat.fi/uutiset/hussein-mohamud-24-loysi-oman-polkunsa-harva-toteuttaa-elamassaan-sita-mihin-pystyisi/' rel='noopener nofollow' target='_blank'>https://www.yrittajat.fi/uutiset/hussein-mohamud-24-loysi-oman-polkunsa-harva-toteuttaa-elamassaan-sita-mihin-pystyisi/</a></li></ul>
   <p>Sivu ei käytä evästeitä, seurantaa eikä ulkoisia resursseja.</p>
-</div></footer>
+</div></div></footer>
 <script>
 (function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in')});return}
 var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.1});
